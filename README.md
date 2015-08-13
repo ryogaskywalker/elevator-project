@@ -19,7 +19,8 @@
 ### 定数
 - 各エレベータのキャパ
 - エレベータの速度(時間)
- - 参考：[http://www.hachi-jtk.or.jp/mansion/file/2013_11.pdf]
+ - <http://www.hachi-jtk.or.jp/mansion/file/2013_11.pdf>
+ - [エレベータの基準](http://www.mitsubishielectric.co.jp/elevator/planning/regulation/pdf/8-2.pdf)
 - 23階に人が来る頻度
 
 ### 決めたこと
