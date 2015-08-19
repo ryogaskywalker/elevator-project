@@ -1,25 +1,16 @@
 #!/bin/ruby
 require 'csv'
-
-LOOP_NUM = 10000
-
-# global variables
-$CAPACITY = 20
-# 2.2 m / s (ref:README.md)
-$SPEED = 2.2
-# 10 / s
-$INCIDENCE = 10
+require './Parameters.rb'
 
 FILENAME = "./test.csv"
-
 class ElevatorController
     def simulate
-        for time in 1..LOOP_NUM
+        for $time in 1..LOOP_NUM
             # write Elevator Object Class
             # output file
             CSV.open(FILENAME, "a", :encoding => "SJIS") do |writer|
                 #writer << [time, eObj]
-                writer << [time]
+                writer << [$time]
             end
         end
     end
