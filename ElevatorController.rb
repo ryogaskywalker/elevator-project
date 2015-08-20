@@ -14,7 +14,7 @@ class ElevatorController
             @eO.push(ElevatorObject.new(23))
         end
         for index in 23..41
-            if index < 24 & index >= 33 then
+            if index < 24 && index >= 33 then
                 @fO.push(FloorObject.new(index))
             end
         end
