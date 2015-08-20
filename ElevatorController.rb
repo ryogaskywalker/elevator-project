@@ -37,16 +37,16 @@ class ElevatorController
             # output file
             CSV.open(FILENAME_MAIN, "a", :encoding => "SJIS") do |writer|
                 #writer << [time, eObj]
-                writer << [$time, @eO[0].]
+                writer << [$time]
             end
         end
     end
     def judge
-        for index in @eO do
-            # call Elevator Objects method
-            
-        end
-        for index in @fO do
+        @eO.each_with_index{ |eObj, index|
+            @fO.each_with_index{ |fObj, index|
+                #fObj.
+            }
+        }
     end
 end
 
