@@ -1,7 +1,7 @@
 #!/bin/ruby
 require 'csv'
 require './Parameters.rb'
-FILENAME = "./floor_object_log.csv"
+FILENAME_FLOOR = "./floor_object_log.csv"
 
 class FloorObject
   def initialize(floornum)
@@ -42,8 +42,32 @@ class FloorObject
     end
   end
 
+  def put_human_to_elv(goup_flg, capasity)
+    # expecting: goup_flg is true when e0 is going up
+    if @goup_flg == goup_flg then
+      # エレベータの進行方向に行きたい人がいるとき
+      # hOを順番に見ていってcapa人までは追加する
+      # エレベータが上向きか下向きかはforの外でやった方が早かった気がする
+      @human_arr_copy = Marshal.load(Marshal.dump(@human_arr))
+      for human in @human_arr_copy do
+        if capasity > 0 and goup_flg then
+          if human.ans_going_up(@floor_number) then
+            @human_arr.delete(human)
+            capasity -= 1
+          end
+        elsif capasity > 0 and !goup_flg then
+          if human.ans_going_down(@floor_number) then
+            @human_arr.delete(human)
+            capasity -= 1
+          end
+        end
+      end
+
+    end
+  end
+
   def log
-    CSV.open(FILENAME, "a", :encoding => "SJIS") do |writer|
+    CSV.open(FILENAME_FLOOR, "a", :encoding => "SJIS") do |writer|
       writer << [$time, @human_arr.length]
     end
   end
