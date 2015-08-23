@@ -12,3 +12,7 @@ $SPEED = 2.2
 $INCIDENCE = 10
 
 $time = 0
+
+$move_time_long = 10 # move time of 23F~33F
+$move_time_short = 2 # other than the above
+$stop_time = 2 # stop time
