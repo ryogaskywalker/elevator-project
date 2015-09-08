@@ -13,4 +13,14 @@ describe FloorObject do
     fO.set_human(10)
     expect(fO.human_arr.length).to eq 10
   end
+
+  it "put_human_to_elv " do
+    fO = FloorObject.new(41)
+    fO.set_human(10)
+    p fO.godown_flg
+    p fO.goup_flg
+    fO.put_human_to_elv(false, 2)
+    p fO.human_arr.length
+    expect(fO.human_arr.length).to eq 8
+  end
 end

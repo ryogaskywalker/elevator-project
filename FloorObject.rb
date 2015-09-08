@@ -50,27 +50,30 @@ class FloorObject
     end
   end
 
-  def put_human_to_elv(goup_flg, capasity)
-    # expecting: goup_flg is true when e0 is going up
-    if @goup_flg == goup_flg then
+  def put_human_to_elv(go_flg, capasity)
+    # expecting: goup_flg is true when eO is going up
+    if (go_flg == true && @goup_flg == true) || (go_flg == false && @godown_flg == true) then
       # エレベータの進行方向に行きたい人がいるとき
       # hOを順番に見ていってcapa人までは追加する
       # エレベータが上向きか下向きかはforの外でやった方が早かった気がする
-      @human_arr_copy = Marshal.load(Marshal.dump(@human_arr))
+      @human_arr_copy = Array.new()
+      for human in @human_arr do
+        @human_arr_copy.push(human)
+      end
+
       for human in @human_arr_copy do
-        if capasity > 0 and goup_flg then
+        if capasity > 0 and go_flg then
           if human.ans_going_up(@floor_number) then
             @human_arr.delete(human)
             capasity -= 1
           end
-        elsif capasity > 0 and !goup_flg then
+        elsif capasity > 0 and !go_flg then
           if human.ans_going_down(@floor_number) then
             @human_arr.delete(human)
             capasity -= 1
           end
         end
       end
-
     end
   end
 
