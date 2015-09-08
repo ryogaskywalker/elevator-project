@@ -14,13 +14,17 @@ describe FloorObject do
     expect(fO.human_arr.length).to eq 10
   end
 
-  it "put_human_to_elv " do
+  it "put_human_to_elv (capa over case)" do
     fO = FloorObject.new(41)
     fO.set_human(10)
-    p fO.godown_flg
-    p fO.goup_flg
     fO.put_human_to_elv(false, 2)
-    p fO.human_arr.length
     expect(fO.human_arr.length).to eq 8
+  end
+
+  it "put_human_to_elv (capa not over case)" do
+    fO = FloorObject.new(23)
+    fO.set_human(10)
+    fO.put_human_to_elv(true, 11)
+    expect(fO.human_arr.length).to eq 0
   end
 end
