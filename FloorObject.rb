@@ -19,8 +19,10 @@ class FloorObject
 
   def set_human(human_num)
     # don't care human_num is minus number case
-    for num in 1..human_num do
-      @human_arr<<HumanObject.new(@floor_number)
+    if human_num > 0 then
+      for num in 1..human_num do
+        @human_arr<<HumanObject.new(@floor_number)
+      end
     end
     update_goup_flg
     update_godown_flg
