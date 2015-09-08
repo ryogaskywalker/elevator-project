@@ -1,9 +1,15 @@
 #!/bin/ruby
 require 'csv'
 require './Parameters.rb'
+require './HumanObject.rb'
 FILENAME_FLOOR = "./floor_object_log.csv"
 
 class FloorObject
+  attr_accessor :floor_number
+  attr_accessor :human_arr
+  attr_accessor :goup_flg
+  attr_accessor :godown_flg
+
   def initialize(floornum)
     @floor_number = floornum # expecting 23 or 33~41
     @human_arr = Array.new() # array list of human wating elevator in this floor
