@@ -29,9 +29,6 @@ class HumanObject
   end
 
   def ans_going_down(current_floor)
-    # if this human wants to go up, return true
-    # else, return false
-    # (don't care dest=current situation)
     if @destination_floor > current_floor then
       return false
     else
