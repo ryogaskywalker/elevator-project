@@ -7,6 +7,10 @@ FILENAME_ELEVATOR = "./elevator_object_log.csv"
 class ElevatorObject
   attr_accessor :state
   attr_accessor :current_floor
+  attr_accessor :destination_floor_arr
+  attr_accessor :human_arr
+  attr_accessor :move_time
+  attr_accessor :stop_flag
 
   def initialize(current_floor)
     @state = "stay" # stay, up or down
@@ -32,6 +36,7 @@ class ElevatorObject
   # get off the elevator method
   # this method does not check state(if human_arr.length is zero, this method does not change the state to stay)
   def get_off
+    @destination_floor_arr.delete(@current_floor)
     new_human_arr = Array.new
     @human_arr.each {|human|
       destination_floor = human.destination_floor
